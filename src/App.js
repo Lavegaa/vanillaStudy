@@ -1,7 +1,5 @@
 import InfinityScroll from './components/InfinityScroll.js';
 
-import { getItem, setItem } from './util/sessionStorage.js';
-
 export default class App {
   constructor($target) {
 
