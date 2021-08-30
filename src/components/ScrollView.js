@@ -11,13 +11,20 @@ export default class ScrollView {
     this.intersection = InfinityScroll(handleScroll);
     $target.appendChild(this.section);
 
-    //event deligation
+    //event delegation
     this.section.addEventListener("click", (e) => {
-      console.log("hello");
       const path = e.path;
-      console.log(path);
       const card = path.find((comp) => comp.className == "block");
-      console.log(card);
+      if (card) {
+        const item = this.findById(card.dataset.id);
+        console.log(item);
+      }
+    });
+  }
+
+  findById(id) {
+    return this.datas.find((val) => {
+      return (val.id = id);
     });
   }
 
@@ -45,7 +52,6 @@ export default class ScrollView {
       block.appendChild(title);
       this.section.appendChild(block);
     });
-
     this.setIntersection();
   }
 }
