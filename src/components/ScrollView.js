@@ -10,6 +10,15 @@ export default class ScrollView {
     lazyLoading();
     this.intersection = InfinityScroll(handleScroll);
     $target.appendChild(this.section);
+
+    //event deligation
+    this.section.addEventListener("click", (e) => {
+      console.log("hello");
+      const path = e.path;
+      console.log(path);
+      const card = path.find((comp) => comp.className == "block");
+      console.log(card);
+    });
   }
 
   setDatas(datas) {
@@ -29,13 +38,14 @@ export default class ScrollView {
       const block = document.createElement("div");
       block.classList.add("block", "lazy");
       block.dataset.src = val.medium_cover_image;
-      console.log(val);
+      block.dataset.id = val.id;
 
       const title = document.createElement("h1");
       title.innerText = val.title;
       block.appendChild(title);
       this.section.appendChild(block);
     });
+
     this.setIntersection();
   }
 }

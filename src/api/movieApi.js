@@ -17,10 +17,10 @@ const request = async (url) => {
 };
 
 const api = {
-  getMovies: async () => {
+  getMovies: async (page) => {
     try {
       const movies = await request(
-        "https://yts.mx/api/v2/list_movies.json?limit=15"
+        `https://yts.mx/api/v2/list_movies.json?limit=15&page=${page}`
       );
       return {
         isError: false,
