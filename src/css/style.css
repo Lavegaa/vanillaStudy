@@ -15,7 +15,7 @@ body {
   justify-content: center;
   /* TODO: 카드 정렬하기 */
   margin-left: calc((100% - (20% * 4)) / 4);
-  font-size: 50px;
+  font-size: 10px;
   width: 250px;
   height: 350px;
 }
