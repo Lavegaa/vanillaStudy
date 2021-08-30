@@ -18,27 +18,5 @@ export default class App {
         }
       },
     });
-    // const infinityScroll = new InfinityScroll({
-    //   $target,
-    //   data,
-    //   instanceData: (number) => {
-    //     let arr = [];
-    //     for (let i = 0; i < number; i += 1) {
-    //       arr.push([
-    //         Math.floor(Math.random() * 255),
-    //         Math.floor(Math.random() * 255),
-    //         Math.floor(Math.random() * 255),
-    //       ]);
-    //     }
-    //     return arr;
-    //   },
-    //   handleScroll: async () => {
-    //     const response = await api.getMovies();
-    //     if (!movies.isError) {
-    //       const newData = [...data, response.data];
-
-    //     }
-    //   },
-    // });
   }
 }

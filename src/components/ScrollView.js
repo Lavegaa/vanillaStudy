@@ -1,4 +1,5 @@
 import InfinityScroll from "../util/InfinityScroll.js";
+import lazyLoading from "../util/LazyLoading.js";
 
 export default class ScrollView {
   constructor({ $target, data, handleScroll }) {
@@ -6,6 +7,7 @@ export default class ScrollView {
     this.section.classList.add("container");
     this.datas = [];
     handleScroll();
+    lazyLoading();
     this.intersection = InfinityScroll(handleScroll);
     $target.appendChild(this.section);
   }
@@ -13,6 +15,7 @@ export default class ScrollView {
   setDatas(datas) {
     this.datas = datas;
     this.render();
+    lazyLoading();
   }
 
   setIntersection() {
@@ -25,6 +28,7 @@ export default class ScrollView {
     this.datas.forEach((val, idx) => {
       const block = document.createElement("div");
       block.classList.add("block", "lazy");
+      block.dataset.src = val.medium_cover_image;
       console.log(val);
 
       const title = document.createElement("h1");
