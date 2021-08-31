@@ -2,13 +2,13 @@ import InfinityScroll from "../util/InfinityScroll.js";
 import lazyLoading from "../util/LazyLoading.js";
 
 export default class ScrollView {
-  constructor({ $target, data, handleScroll }) {
+  constructor({ $target, data, fetchData }) {
     this.section = document.createElement("section");
     this.section.classList.add("container");
-    this.datas = [];
-    handleScroll();
+    this.data = [];
+    fetchData();
     lazyLoading();
-    this.intersection = InfinityScroll(handleScroll);
+    this.intersection = InfinityScroll(fetchData);
     $target.appendChild(this.section);
 
     //event delegation
@@ -23,13 +23,13 @@ export default class ScrollView {
   }
 
   findById(id) {
-    return this.datas.find((val) => {
+    return this.data.find((val) => {
       return (val.id = id);
     });
   }
 
-  setDatas(datas) {
-    this.datas = datas;
+  setData(data) {
+    this.data = data;
     this.render();
     lazyLoading();
   }
@@ -41,7 +41,7 @@ export default class ScrollView {
 
   render() {
     this.section.innerHTML = "";
-    this.datas.forEach((val, idx) => {
+    this.data.forEach((val, idx) => {
       const block = document.createElement("div");
       block.classList.add("block", "lazy");
       block.dataset.src = val.medium_cover_image;
